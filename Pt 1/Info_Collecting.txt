@@ -1,0 +1,19 @@
+1) A University Conference Center (UCC)
+
+2) UCC has the mission to foster the organization of conferences for participating businesses, is in need of a University Conference Center System (UCCS) for the management of the UCC.
+
+3) An online registration service.
+
+4) Assumed paper and ink registration system and organization, with human data entry.  Input -> conferences (presenters/attendees) Output -> conferences (presented/attended)
+
+5) Assumed potential human error
+
+6) The activity of the system is to automate the organization of conferences, registration, costs and record keeping of the conferences.  
+In addition, the system tracks equipment availability for each presentation room, to ensure no separate reservations can be made that require the same piece of equipment.
+The system calculates the cost of the conference based on the room/equipment in use, attendees, and length of conference.
+
+7) UCC and future conference attendees
+
+8) For 8 & 9, see customer feedback email from 3/2/2017
+
+9)

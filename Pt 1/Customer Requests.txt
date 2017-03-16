@@ -1,0 +1,14 @@
+3/2/2017
+
+Dear Group 2 Software Development Team,
+ 
+I am pleased to hear from you.
+The business priority of my organization is to maximize the income with an efficient allocation system that will permit to track and trace in the future the history of its business and of its business transactions.
+The organization does not currently have any system in place, so we are excited and eager to get one!
+Quality, performance, and security are always great concerns for my organization. Obviously my organization is interested in seeing a working system with good performance and quality code. As far as security, only the people of my organization can access the system. I can provide a list upon request (in the meanwhile you can simulate with a fake list).
+My organization and I hope that we can take care of the remaining details in the future.
+Would you need additional information, do not hesitate to ask.
+ 
+(As per the organization)
+Angela Guercio
+
