@@ -5,9 +5,11 @@
 #define EQUIPMENT_H
 #include "Database.h"  // base class
 
-class Equipment : Database
+class Equipment : public Database
 {
-	public:
+public:
+	void add();
+	void remove();
 	
 	private:
 	

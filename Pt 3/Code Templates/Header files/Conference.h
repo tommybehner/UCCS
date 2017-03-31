@@ -7,6 +7,7 @@
 class Conference
 {
 	public:
+		void entry();  // previously "register," but that is a reserved keyword for operating on registers
 	
 	private:
 	

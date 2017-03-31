@@ -5,10 +5,12 @@
 #define ROOMS_H
 #include "Database.h"  // base class
 
-class Rooms : Database
+class Rooms : public Database
 {
-	public:
-	
+public: 
+	void add();
+	void remove();
+
 	private:
 	
 };
