@@ -1,0 +1,25 @@
+Have the following done by these dates:
+
+1) Tues 14th
+	- have individual lists of total classes
+	- descriptions, details, buzzwords for Data Dictionary
+	- iron out details, collaborate
+
+2) Thurs 16th
+	-specifications for classes
+	-collaborate
+
+3) Tues 21st
+	-put all of the above into class diagram
+	- Using the previously defined classes, build relationships among them and 
+		how they are interconnected
+	-Collaborate, build the final diagram of classes and their relationships
+
+4) Friday 24th
+	-Prepare the class templates for the future prototype
+	- Clean up any deliverables (class diagram, fully anotated diagram with 
+		both classes and their relationships, the data dictionary)
+
+5) Saturday 25th (DUE DATE)
+	- Final overview of deliverables, last moment to review and polish
+	- TURN IN
