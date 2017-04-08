@@ -1,0 +1,3 @@
+these folders contain the original output, but they are done incorrectly.  saved temporarily in case we need em
+
+-t
