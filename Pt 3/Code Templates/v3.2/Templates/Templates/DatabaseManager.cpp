@@ -7,19 +7,19 @@ void DatabaseManager::menu()
 {
 }
 
-UCCSchedule DatabaseManager::get_schedule() const
+UCCSchedule DatabaseManager::get_schedule(UCCSchedule& obj) const
 {
-	return UCCSchedule();  // Returns schedule object
+	return obj;  // Returns schedule object
 }
 
 void DatabaseManager::find_conference()
 {
-	get_schedule(); // Calls get_schedule
+	//get_schedule; // Calls get_schedule
 }
 
 void DatabaseManager::find_session()
 {
-	get_schedule(); // Calls get_schedule
+	//get_schedule(); // Calls get_schedule
 }
 
 void DatabaseManager::find_resource()

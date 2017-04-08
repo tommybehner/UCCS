@@ -3,7 +3,7 @@
 
 #include "Conference.h"
 
-UCCSchedule Conference::get_schedule() //const
+UCCSchedule Conference::get_schedule(UCCSchedule &obj) const
 {
 	return UCCSchedule();  // Returns schedule object
 }

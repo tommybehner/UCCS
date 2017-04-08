@@ -1,0 +1,17 @@
+﻿  BusinessAccount.cpp
+  Conference.cpp
+  Database.cpp
+  DatabaseManager.cpp
+  Equipment.cpp
+  GuestAccount.cpp
+  Interface.cpp
+  Room.cpp
+  Session.cpp
+  UCCSchedule.cpp
+  Generating code
+  0 of 1 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Templates.vcxproj -> C:\Users\Jacob Forte\OneDrive - Kent State University\School\Software Enginering\Project1\Project_1\Pt 3\Code Templates\v3.2\Templates\x64\Release\UCCS.exe
+  Templates.vcxproj -> C:\Users\Jacob Forte\OneDrive - Kent State University\School\Software Enginering\Project1\Project_1\Pt 3\Code Templates\v3.2\Templates\x64\Release\UCCS.pdb (Full PDB)

@@ -22,7 +22,7 @@
     <ProjectGuid>{C4615A37-C3E0-4FEB-B85C-2D1B2B29167C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Templates</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
     <ProjectName>UCCS</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

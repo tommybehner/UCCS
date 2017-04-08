@@ -7,7 +7,7 @@ void BusinessAccount::menu()
 {
 }
 
-UCCSchedule BusinessAccount::get_schedule()
+UCCSchedule BusinessAccount::get_schedule(UCCSchedule& obj) const
 {
 	return UCCSchedule();
 }

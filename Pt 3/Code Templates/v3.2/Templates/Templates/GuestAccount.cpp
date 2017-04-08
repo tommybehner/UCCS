@@ -7,17 +7,17 @@ void GuestAccount::menu()
 {
 }
 
-UCCSchedule GuestAccount::get_schedule() const
+UCCSchedule GuestAccount::get_schedule(UCCSchedule& obj) const
 {
 	return UCCSchedule();  // returns schedule object
 }
 
 void GuestAccount::find_conference()
 {
-	get_schedule(); // Calls get_schedule
+	//get_schedule(); // Calls get_schedule
 }
 
-Conference GuestAccount::get_conference() const
+Conference GuestAccount::get_conference(Conference& obj) const
 {
 	return Conference();  // Returns conference object
 }
