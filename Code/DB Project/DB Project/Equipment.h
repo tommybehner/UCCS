@@ -15,4 +15,3 @@ public:
 	void editCost(string, int);			//!Changes the cost for both the object and the database.
 	void displayEquipment();			//!Returns The equipment DB
 };
-

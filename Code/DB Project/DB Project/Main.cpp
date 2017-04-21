@@ -2,10 +2,14 @@
 #include <string>
 #include "Equipment.h"
 #include "Room.h"
-#include "DBConnector.h"
+#include "AssetsDB.h"
+//#include "DBConnector.h"
 using namespace std;
 
 void main() {
+	AssetsDB temp;
+	temp.roomUseStop("Jefferson", "4/20/2017", "3");
+
 
 	//temp interface for room class
 	/*
@@ -59,7 +63,7 @@ void main() {
 	}
 	*/
 	//the following is a temp interface for the equipment class
-	//*
+	/*
 	{
 		int choice = 0;
 
@@ -108,5 +112,5 @@ void main() {
 			}
 		} while (choice != 1);
 	}
-	//*/
+	*/
 };

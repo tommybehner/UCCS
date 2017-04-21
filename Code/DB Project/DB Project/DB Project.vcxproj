@@ -144,12 +144,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AssetsDB.h" />
     <ClInclude Include="DBConnector.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="sqlite3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AssetsDB.cpp" />
     <ClCompile Include="DBConnector.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Main.cpp" />

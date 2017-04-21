@@ -27,7 +27,6 @@ void Equipment::addEquipment(string tempname, int tempcost)
 	if (name == Select(str))
 	{
 		str = "SELECT cost FROM Equipment WHERE Name = '" + name + "'";
-		cost = atoi(str.c_str());
 	}
 	else {//If equipment not found, creates equipment for the DB
 		  //creates a new eqipment in the database

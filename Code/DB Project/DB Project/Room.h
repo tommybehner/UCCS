@@ -15,4 +15,3 @@ public:
 	void editCost(string, int);	//!change the cost of a room
 	void displayRoom();			//!display all data in the room table
 };
-

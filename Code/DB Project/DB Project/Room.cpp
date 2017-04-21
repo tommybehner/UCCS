@@ -20,16 +20,15 @@ void Room::addRoom(string tempname, int tempcost)
 	string strCost = std::to_string(cost);
 	string str;
 
-	//checks if equipment named exists (every equipment name is unique)
+	//checks if room named exists (every room name is unique)
 	str = "SELECT Name FROM Room WHERE Name = '" + name + "'";
 	if (name == Select(str))
 	{
 		str = "SELECT cost FROM Room WHERE Name = '" + name + "'";
-		cost = atoi(str.c_str());
 	}
-	else {//If equipment not found, creates equipment for the DB
+	else {//If equipment not found, creates room for the DB
 		  //creates a new Room in the database
-		str = "INSERT INTO Room(Name, Cost)\nVALUES ('" + name + "', " + strCost + ");";
+		str = "INSERT INTO Room(Name, Cost, IsAvail)\nVALUES ('" + name + "', " + strCost + ", 1);";
 		EditRow(str);
 	}
 	DBDisconnect();
@@ -46,7 +45,7 @@ void Room::removeRoom(string name)
 void Room::editCost(string name, int newCost)
 {
 	int cost = newCost;
-	string strCost = std::to_string(newCost);
+	string strCost = std::to_string(newCost); //converts an int to a string
 
 	string str = "UPDATE Room SET Cost=" + strCost + " WHERE Name = '" + name + "'";
 	EditRow(str);
