@@ -1,6 +1,5 @@
 #include "Room.h"
-#include "DBConnector.h"
-#include <iostream>
+
 
 Room::Room(string tempname, int tempcost)
 {

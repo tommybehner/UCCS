@@ -1,7 +1,4 @@
 #include "Equipment.h"
-#include "DBConnector.h"
-#include <iostream>
-#include <string>
 
 //Creates an equipment object and adds it to the DB, if not already there
 //string = desired name of equipment
@@ -57,7 +54,7 @@ void Equipment::editCost(int newCost)
 
 void Equipment::displayEquipment(Equipment temp)
 {
-	temp.removeEquipment(temp.name);
+	temp.removeEquipment(name);
 	string str;
 	str = "SELECT * FROM Equipment";
 	std::cout << Select(str) << "\n";

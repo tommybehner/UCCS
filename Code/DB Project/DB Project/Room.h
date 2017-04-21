@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "DBConnector.h"
+#include <iostream>
 using namespace std;
 
 class Room
