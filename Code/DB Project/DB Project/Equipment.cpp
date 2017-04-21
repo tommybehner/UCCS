@@ -36,9 +36,9 @@ Equipment::~Equipment()
 
 //Used to remove Equipment from the DB
 //name = name of equipment to be removed
-void Equipment::removeEqipment(std::string name)
+void Equipment::removeEquipment(string name)
 {
-	std:string str = "DELETE FROM Equipment WHERE Name = '" + name + "';";
+	string str = "DELETE FROM Equipment WHERE Name = '" + name + "';";
 	EditRow(str);
 }
 
@@ -52,11 +52,13 @@ void Equipment::editCost(int newCost)
 
 	string str = "UPDATE Equipment SET Cost=" + strCost + " WHERE Name = '" + name + "'";
 	EditRow(str);
-	
 }
 
-//Simply return the variable cost
-int Equipment::getCost()
+
+void Equipment::displayEquipment(Equipment temp)
 {
-	return cost;
+	temp.removeEquipment(temp.name);
+	string str;
+	str = "SELECT * FROM Equipment";
+	std::cout << Select(str) << "\n";
 }

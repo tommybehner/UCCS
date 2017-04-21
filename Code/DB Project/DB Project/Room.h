@@ -5,18 +5,15 @@ using namespace std;
 class Room
 {
 public:
-	Room();
-	~Room();
+	Room(string, int);			//!Creates a new object and room in the DB
+	~Room();					//!Required, do not remove
 
-	void editCost();
-
-	int getID();
-	int getname();
-	int getCost();
+	void removeRoom(string);	//!remove a room from the DB
+	void editCost(int);			//!change the cost of a room
+	void displayRoom(Room);		//!display all data in the room table
 
 private:
-	int ID;
-	int name;
-	int cost;
+	string name;	//the name of the room
+	int cost;		//the cost of the room
 };
 

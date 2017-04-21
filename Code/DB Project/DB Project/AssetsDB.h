@@ -1,17 +1,20 @@
+#include <string>
+#include "Room.h"
+#include "Equipment.h"
 #pragma once
+
+
 class AssetsDB
 {
 public:
-	AssetsDB();
+	AssetsDB(string, int, int);
 	~AssetsDB();
 
-	void addEquip();
-	void removeEquip();
-	void addRoom();
-	void removeRoom();
+	void removeScheduleRoom();
+	void removeScheduleEquipment();
 
-	void tempaddEquip();
-	void tempremoveEquipment();
-	void tempaddRoom();
-	void tempremoveRoom();
+private:
+	string name;
+	int date;
+	int time;
 };
