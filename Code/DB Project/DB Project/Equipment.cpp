@@ -3,11 +3,22 @@
 //Creates an equipment object and adds it to the DB, if not already there
 //string = desired name of equipment
 //cost = desired cost of equipment
-Equipment::Equipment(string tempname, int tempcost)
+Equipment::Equipment()
+{
+}
+
+//!Disconstructs the equipment object, not manually used
+Equipment::~Equipment()
+{
+	DBDisconnect();
+}
+
+//used to add an equipment to the DB
+void Equipment::addEquipment(string tempname, int tempcost)
 {
 	DBConnect();
-	name = tempname;
-	cost = tempcost;
+	string name = tempname;
+	int cost = tempcost;
 	string strCost = std::to_string(cost);
 	string str;
 
@@ -17,17 +28,12 @@ Equipment::Equipment(string tempname, int tempcost)
 	{
 		str = "SELECT cost FROM Equipment WHERE Name = '" + name + "'";
 		cost = atoi(str.c_str());
-	}else {//If equipment not found, creates equipment for the DB
-		//creates a new eqipment in the database
+	}
+	else {//If equipment not found, creates equipment for the DB
+		  //creates a new eqipment in the database
 		str = "INSERT INTO Equipment(Name, Cost)\nVALUES ('" + name + "', " + strCost + ");";
 		EditRow(str);
 	}
-	DBDisconnect();
-}
-
-//!Disconstructs the equipment object, not manually used
-Equipment::~Equipment()
-{
 	DBDisconnect();
 }
 
@@ -42,19 +48,18 @@ void Equipment::removeEquipment(string name)
 //Input = object.editCost(desired_cost)
 //Changes the cost for both the object and the database.
 //int = desired cost
-void Equipment::editCost(int newCost)
+void Equipment::editCost(string name, int newCost)
 {
-	cost = newCost;
+	int cost = newCost;
 	string strCost = std::to_string(newCost);
 
 	string str = "UPDATE Equipment SET Cost=" + strCost + " WHERE Name = '" + name + "'";
 	EditRow(str);
 }
 
-
-void Equipment::displayEquipment(Equipment temp)
+//simply outputs the entire equipment DB
+void Equipment::displayEquipment()
 {
-	temp.removeEquipment(name);
 	string str;
 	str = "SELECT * FROM Equipment";
 	std::cout << Select(str) << "\n";

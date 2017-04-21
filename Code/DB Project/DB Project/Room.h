@@ -7,15 +7,12 @@ using namespace std;
 class Room
 {
 public:
-	Room(string, int);			//!Creates a new object and room in the DB
+	Room();						//!Creates a new object
 	~Room();					//!Required, do not remove
 
+	void addRoom(string, int);	//!add a room to the DB
 	void removeRoom(string);	//!remove a room from the DB
-	void editCost(int);			//!change the cost of a room
-	void displayRoom(Room);		//!display all data in the room table
-
-private:
-	string name;	//the name of the room
-	int cost;		//the cost of the room
+	void editCost(string, int);	//!change the cost of a room
+	void displayRoom();			//!display all data in the room table
 };
 

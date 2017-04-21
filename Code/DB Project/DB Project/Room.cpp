@@ -1,11 +1,22 @@
 #include "Room.h"
 
+//initialize a room object
+Room::Room()
+{
+}
 
-Room::Room(string tempname, int tempcost)
+//required, do not use
+Room::~Room()
+{
+	DBDisconnect();
+}
+
+//used to add a room the the DB
+void Room::addRoom(string tempname, int tempcost)
 {
 	DBConnect();
-	name = tempname;
-	cost = tempcost;
+	string name = tempname;
+	int cost = tempcost;
 	string strCost = std::to_string(cost);
 	string str;
 
@@ -24,29 +35,26 @@ Room::Room(string tempname, int tempcost)
 	DBDisconnect();
 }
 
-Room::~Room()
-{
-	DBDisconnect();
-}
-
+//used to remove a room from the DB
 void Room::removeRoom(string name)
 {
 	string str = "DELETE FROM Room WHERE Name = '" + name + "';";
 	EditRow(str);
 }
 
-void Room::editCost(int newCost)
+//used to change the cost of a room
+void Room::editCost(string name, int newCost)
 {
-	cost = newCost;
+	int cost = newCost;
 	string strCost = std::to_string(newCost);
 
 	string str = "UPDATE Room SET Cost=" + strCost + " WHERE Name = '" + name + "'";
 	EditRow(str);
 }
 
-void Room::displayRoom(Room temp)
+//used to disply all rooms in the DB
+void Room::displayRoom()
 {
-	temp.removeRoom(temp.name);
 	string str;
 	str = "SELECT * FROM Room";
 	std::cout << Select(str) << "\n";
