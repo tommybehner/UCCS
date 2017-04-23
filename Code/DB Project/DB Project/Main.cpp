@@ -3,13 +3,77 @@
 #include "Equipment.h"
 #include "Room.h"
 #include "AssetsDB.h"
+#include "session.h"
+#include "Conference.h"
 //#include "DBConnector.h"
 using namespace std;
 
 void main() {
-	AssetsDB temp;
-	temp.roomUseStop("Jefferson", "4/20/2017", "3");
 
+
+	//temp interface for conference class
+	/*
+	{
+		int x;
+		do
+		{
+			cout << "Welcome #business.\n"
+				<< "Would you like to:\n"
+				<< "1. Create a conference\n"
+				<< "2. Remove a conference\n"
+				<< "3. Edit a conference"
+				<< "4. Display your conferences"
+				<< "5. Exit the program\n";
+			cin >> x;
+
+			switch (x)
+			{
+			default:
+				break;
+
+			case 1:
+			{
+				//create the conference
+				Conference conf;
+				string confName;
+				string confDate;
+				int check;
+				cout << "Please enter a name for your conference and a date (such as 4/20/2017)\n";
+				cin >> confName >> confDate;
+				conf.addConference(confName, confDate);
+
+				//Create sessions
+				Session sess;
+				string sessName;
+				string sessTime;
+				cout << "Please enter the name of the session\n";
+				sess.addSession(confName, sessName, confDate, sessTime);
+
+				break;
+			}
+
+			case 2:
+			{
+
+				break;
+			}
+
+			case 3:
+			{
+
+				break;
+			}
+
+			case 4:
+			{
+
+				break;
+			}
+			}
+
+		} while (x =! 5);
+	}
+	*/
 
 	//temp interface for room class
 	/*

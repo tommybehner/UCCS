@@ -11,18 +11,18 @@ AssetsDB::~AssetsDB()
 }
 
 //books a room for a special session
-void AssetsDB::roomUse(string name, string date, string time)
+int AssetsDB::roomUse(string roomName, string date, string time)
 {
 	DBConnect();
 
 	//check if room exists
 	{
-		string str = "SELECT Name FROM Room WHERE Name='" + name + "'";
+		string str = "SELECT Name FROM Room WHERE Name='" + roomName + "'";
 		string out = Select(str);
-		if (out != name)
+		if (out != roomName)
 		{
 			cout << "Error, Room DNE\n";
-			return;
+			return 0;
 		}
 	}
 
@@ -37,33 +37,34 @@ void AssetsDB::roomUse(string name, string date, string time)
 			if (out == time)
 			{
 				cout << "Error, Room already in use\n";
-				return;
+				return 0;
 			}
 		}
 	}
 
 	//Create the session
 	{
-		string str = "INSERT INTO RoomUse(Name, Date, Time)\nVALUES('" + name + "', '" + date + "', '" + time +"')";
+		string str = "INSERT INTO RoomUse(Name, Date, Time)\nVALUES('" + roomName + "', '" + date + "', '" + time +"')";
 		EditRow(str);
 	}
 	DBDisconnect();
+	return 1;
 }
 
 //remove room from the book
-void AssetsDB::roomUseStop(string name, string date, string time)
+int AssetsDB::roomUseStop(string roomName, string date, string time)
 {
 	DBConnect();
 
 	//check if room exists
 	{
-		string str = "SELECT Name FROM Room WHERE Name='" + name + "'";
+		string str = "SELECT Name FROM Room WHERE Name='" + roomName + "'";
 		string out = Select(str);
-		if (out != name)
+		if (out != roomName)
 		{
 			cout << "Error, Room DNE\n";
 			DBDisconnect();
-			return;
+			return 0;
 		}
 	}
 
@@ -73,34 +74,35 @@ void AssetsDB::roomUseStop(string name, string date, string time)
 		string out = Select(str);
 		if (out == date)
 		{
-			string str = "SELECT Time FROM RoomUse WHERE Time ='" + time + "'";
+			string str = "SELECT Time FROM RoomUse WHERE Date='"+date+"' AND Time ='" + time + "'";
 			string out = Select(str);
 			if (out == time)
 			{
-				string str = "DELETE FROM RoomUse WHERE Name='" + name + "'";
+				string str = "DELETE FROM RoomUse WHERE Name='" + roomName + "', AND Date='"+date+"', AND Time='"+time+"'";
 				EditRow(str);
 				DBDisconnect();
-				return;
+				return 1;
 			}
 		}
 	}
 	cout << "Error: Room not in use\n";
 	DBDisconnect();
+	return 0;
 }
 
 //Books equipment for a session
-void AssetsDB::equipmentUse(string name, string date, string time)
+int AssetsDB::equipmentUse(string equipName, string date, string time)
 {
 	DBConnect();
 
 	//check if equipment exists
 	{
-		string str = "SELECT Name FROM Equipment WHERE Name='" + name + "'";
+		string str = "SELECT Name FROM Equipment WHERE Name='" + equipName + "'";
 		string out = Select(str);
-		if (out != name)
+		if (out != equipName)
 		{
 			cout << "Error, Equipment DNE\n";
-			return;
+			return 0;
 		}
 	}
 
@@ -115,37 +117,38 @@ void AssetsDB::equipmentUse(string name, string date, string time)
 			if (out == time)
 			{
 				cout << "Error, Equipment already in use\n";
-				return;
+				return 0;
 			}
 		}
 	}
 
 	//Books the equipment
 	{
-		string str = "INSERT INTO EquipUse(Name, Date, Time)\nVALUES('" + name + "', '" + date + "', '" + time + "')";
+		string str = "INSERT INTO EquipUse(Name, Date, Time)\nVALUES('" + equipName + "', '" + date + "', '" + time + "')";
 		EditRow(str);
 	}
 	DBDisconnect();
+	return 1;
 }
 
 //removes equipment from the book
-void AssetsDB::equipmentUseStop(string name, string date, string time)
+int AssetsDB::equipmentUseStop(string equipName, string date, string time)
 {
 	DBConnect();
 
-	//check if room exists
+	//check if Equipment exists
 	{
-		string str = "SELECT Name FROM Equipment WHERE Name='" + name + "'";
+		string str = "SELECT Name FROM Equipment WHERE Name='" + equipName + "'";
 		string out = Select(str);
-		if (out != name)
+		if (out != equipName)
 		{
 			cout << "Error, Equipment DNE\n";
 			DBDisconnect();
-			return;
+			return 0;
 		}
 	}
 
-	//check if room is already scheduled
+	//check if Equipment is already scheduled
 	{
 		string str = "SELECT Date FROM EquipUse WHERE Date='" + date + "'";
 		string out = Select(str);
@@ -155,13 +158,14 @@ void AssetsDB::equipmentUseStop(string name, string date, string time)
 			string out = Select(str);
 			if (out == time)
 			{
-				string str = "DELETE FROM EquipUse WHERE Name='" + name + "'";
+				string str = "DELETE FROM EquipUse WHERE Name='" + equipName + "'";
 				EditRow(str);
 				DBDisconnect();
-				return;
+				return 1;
 			}
 		}
 	}
 	cout << "Error: Equipment not in use\n";
 	DBDisconnect();
+	return 0;
 }

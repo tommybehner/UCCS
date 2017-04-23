@@ -145,17 +145,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AssetsDB.h" />
+    <ClInclude Include="Conference.h" />
     <ClInclude Include="DBConnector.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="session.h" />
     <ClInclude Include="sqlite3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetsDB.cpp" />
+    <ClCompile Include="Conference.cpp" />
     <ClCompile Include="DBConnector.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="session.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

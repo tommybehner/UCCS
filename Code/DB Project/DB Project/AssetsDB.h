@@ -10,8 +10,8 @@ public:
 	AssetsDB();
 	~AssetsDB();
 	 
-	void roomUse(string, string, string);
-	void roomUseStop(string, string, string);
-	void equipmentUse(string, string, string);
-	void equipmentUseStop(string, string, string);
+	int roomUse(string, string, string);
+	int roomUseStop(string, string, string);
+	int equipmentUse(string, string, string);
+	int equipmentUseStop(string, string, string);
 };
