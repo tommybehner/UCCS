@@ -1,20 +1,17 @@
-#include <string>
-#include "Room.h"
-#include "Equipment.h"
 #pragma once
-
+#include <string>
+#include "DBConnector.h"
+#include <iostream>
+using namespace std;
 
 class AssetsDB
 {
 public:
-	AssetsDB(string, int, int);
+	AssetsDB();
 	~AssetsDB();
-
-	void removeScheduleRoom();
-	void removeScheduleEquipment();
-
-private:
-	string name;
-	int date;
-	int time;
+	 
+	int roomUse(string, string, string);
+	int roomUseStop(string, string, string);
+	int equipmentUse(string, string, string);
+	int equipmentUseStop(string, string, string);
 };

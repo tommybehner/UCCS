@@ -24,10 +24,16 @@
     <ClInclude Include="sqlite3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DBConnector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="AssetsDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DBConnector.h">
+    <ClInclude Include="session.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Conference.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,10 +47,16 @@
     <ClCompile Include="Room.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DBConnector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="AssetsDB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DBConnector.cpp">
+    <ClCompile Include="session.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Conference.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
