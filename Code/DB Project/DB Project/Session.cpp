@@ -8,7 +8,7 @@ Session::~Session()
 {
 }
 
-void Session::addSession(string sessionName, string roomName, string date, string time)
+int Session::addSession(string sessionName, string roomName, string date, string time)
 {
 	//book the room and check if room is available
 	{
@@ -16,7 +16,7 @@ void Session::addSession(string sessionName, string roomName, string date, strin
 		AssetsDB accessor;
 		check = accessor.roomUse(roomName, date, time);
 		if (check == 0)	//if roomUse returns 0
-			return;
+			return 0;
 	}
 	
 	//Add session to the DB
@@ -24,6 +24,7 @@ void Session::addSession(string sessionName, string roomName, string date, strin
 		string str = "INSERT INTO Session(Name, Room, Date, Time)\nVALUES('" + sessionName + "', '" + roomName + "', '" + date + "', '" + time + "')";
 		EditRow(str);
 	}
+	return 1;
 }
 
 void Session::removeSession(string sessionName)

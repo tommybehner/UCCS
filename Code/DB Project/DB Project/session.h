@@ -10,7 +10,7 @@ public:
 	Session();
 	~Session();
 
-	void addSession(string, string, string, string);		//!Add a session to the DB and books the room
+	int addSession(string, string, string, string);		//!Add a session to the DB and books the room
 	void removeSession(string);								//!Remove a session from the DB and unbooks the room
 
 	void bookEquipment(string, string);		//!Book equipment for the session
