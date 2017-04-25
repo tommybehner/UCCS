@@ -1,7 +1,6 @@
 #include "AssetsDB.h"
 
 
-
 AssetsDB::AssetsDB()
 {
 }

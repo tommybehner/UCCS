@@ -1,7 +1,7 @@
-﻿  Conference.cpp
+﻿  Login.cpp
   Generating code
-  0 of 1 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
+  41 of 41 functions (100.0%) were compiled, the rest were copied from previous compilation.
+    11 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  DB Project.vcxproj -> C:\Users\Jacob Forte\OneDrive - Kent State University\School\Software Enginering\Project1\Project_1\Code\DB Project\Release\DB Project.exe
+  DB Project.vcxproj -> C:\Users\Tommy B\OneDrive\GitHub\Project_1\Code\DB Project\Release\DB Project.exe

@@ -23,7 +23,7 @@
     <ProjectGuid>{81382745-3347-4523-A787-783E456EC0D2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DBProject</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -144,22 +144,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AccountsDB.h" />
     <ClInclude Include="AssetsDB.h" />
     <ClInclude Include="Conference.h" />
     <ClInclude Include="DBConnector.h" />
     <ClInclude Include="Equipment.h" />
+    <ClInclude Include="AttendeeAccount.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="session.h" />
     <ClInclude Include="sqlite3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AccountsDB.cpp" />
     <ClCompile Include="AssetsDB.cpp" />
     <ClCompile Include="Conference.cpp" />
     <ClCompile Include="DBConnector.cpp" />
     <ClCompile Include="Equipment.cpp" />
+    <ClCompile Include="AttendeeAccount.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="session.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Pt 3\ClassDiagram v1.3.vsdx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

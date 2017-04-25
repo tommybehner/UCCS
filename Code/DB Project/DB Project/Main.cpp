@@ -177,4 +177,61 @@ void main() {
 		} while (choice != 1);
 	}
 	*/
+
+	//temp interface for AttendeeAccount class
+
+	{
+		int choice = 0;
+
+		do
+		{
+			cout << "This is the UCCS Attendee attendance modification page\n"
+				<< "Would you like to:\n"
+				<< "1. Exit Program\n"
+				<< "2. Display all data\n"
+				<< "3. Add a Conference to attend\n"
+				<< "4. Remove Conference attendance (withdraw)\n"
+				<< "5. Add a Session to attend\n"
+				<< "6. Remove Session attendance (withdraw)\n"
+				<< "7. Add a Special Session to attend\n"
+				<< "8. Remove Special Session attendance (withdraw)\n";
+			cin >> choice;
+			cout << "\n";
+			switch (choice)
+			{
+			case 1:
+				break;
+
+			case 2:
+			{
+			//	Schedule temp;
+			//	temp.displayConferences();
+				break;
+			}
+			case 3:
+			{
+				string name;
+				int num;
+				cout << "Please enter a conference name\n";  //maybe switch to ID system?
+				cin >> name;
+				cout << "Please enter the date of the conference\n";
+				cin>>num;
+				Conference newConf;
+				newConf.addConference(name);
+				cout << "\n";
+				break;
+			}
+			case 4:
+			{
+				string name;
+				cout << "Insert the name of the equipment you would like to remove.\n";
+				cin >> name;
+				cout << "\n";
+				Equipment temp;
+				temp.removeEquipment(name);
+				break;
+			}
+			}
+		} while (choice != 1);
+	}
 };
