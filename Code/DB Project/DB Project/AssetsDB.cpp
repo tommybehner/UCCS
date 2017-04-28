@@ -77,7 +77,7 @@ int AssetsDB::roomUseStop(string roomName, string date, string time)
 			string out = Select(str);
 			if (out == time)
 			{
-				string str = "DELETE FROM RoomUse WHERE Name='" + roomName + "', AND Date='"+date+"', AND Time='"+time+"'";
+				string str = "DELETE FROM RoomUse WHERE Name='"+roomName+"' AND Date='"+date+"' AND Time='"+time+"'";
 				EditRow(str);
 				DBDisconnect();
 				return 1;

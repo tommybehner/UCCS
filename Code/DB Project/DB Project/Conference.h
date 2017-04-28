@@ -10,11 +10,11 @@ public:
 	Conference();
 	~Conference();
 
-	void addConference(string, string);
+	int addConference(string, string);
 	void removeConference(string);
 
 	void addSession(string, string, string, string);
 	void removeSession(string, string);
 
-	void displaySessions();
+	void displaySessions(string);
 };

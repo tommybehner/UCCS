@@ -5,12 +5,11 @@
 #include "AssetsDB.h"
 #include "session.h"
 #include "Conference.h"
-//#include "DBConnector.h"
+#include "Business.h"
+#include "Attendee.h"
 using namespace std;
 
 void main() {
-
-
 	//temp interface for conference class
 	/*
 	{

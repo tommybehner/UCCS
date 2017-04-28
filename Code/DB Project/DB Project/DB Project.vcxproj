@@ -146,6 +146,9 @@
   <ItemGroup>
     <ClInclude Include="AccountsDB.h" />
     <ClInclude Include="AssetsDB.h" />
+    <ClInclude Include="AssetsManager.h" />
+    <ClInclude Include="Attendee.h" />
+    <ClInclude Include="Business.h" />
     <ClInclude Include="Conference.h" />
     <ClInclude Include="DBConnector.h" />
     <ClInclude Include="Equipment.h" />
@@ -157,6 +160,9 @@
   <ItemGroup>
     <ClCompile Include="AccountsDB.cpp" />
     <ClCompile Include="AssetsDB.cpp" />
+    <ClCompile Include="AssetsManager.cpp" />
+    <ClCompile Include="Attendee.cpp" />
+    <ClCompile Include="Business.cpp" />
     <ClCompile Include="Conference.cpp" />
     <ClCompile Include="DBConnector.cpp" />
     <ClCompile Include="Equipment.cpp" />

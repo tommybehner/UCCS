@@ -36,10 +36,20 @@
     <ClInclude Include="Conference.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="AccountsDB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AttendeeAccount.h">
+=======
+    <ClInclude Include="Business.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Attendee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetsManager.h">
+>>>>>>> refs/remotes/origin/master
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,6 +75,7 @@
     <ClCompile Include="Conference.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="AccountsDB.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -76,5 +87,16 @@
     <None Include="..\..\..\Pt 3\ClassDiagram v1.3.vsdx">
       <Filter>Resource Files</Filter>
     </None>
+=======
+    <ClCompile Include="Business.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Attendee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetsManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> refs/remotes/origin/master
   </ItemGroup>
 </Project>

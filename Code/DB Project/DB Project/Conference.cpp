@@ -9,13 +9,13 @@ Conference::~Conference()
 {
 }
 
-void Conference::addConference(string conferenceName, string date)
+int Conference::addConference(string conferenceName, string date)
 {
 	//check if conference exists
 	{
 		string str = "SELECT Name FROM Conference WHERE Name='" + conferenceName + "'";
 		if (Select(str) != "")
-			return;
+			return 0;
 	}
 
 	//add conference to the DB
@@ -23,24 +23,34 @@ void Conference::addConference(string conferenceName, string date)
 		string str = "INSERT INTO Conference(Name, Date)\nVALUES('" + conferenceName + "', '" + date + "')";
 		EditRow(str);
 	}
-
-	//relate conference to business
+	return 1;
 }
 
 void Conference::removeConference(string conferenceName)
 {
+	//check if conference exists
+
 	//remove all related sessions
 	{
 		string str = "SELECT SessionName FROM Conference_Session WHERE ConferenceName='" + conferenceName + "' GROUP BY ConferenceName";
 		string check = Select(str);
 		while (check != "")
 		{
-			//remove session from DB
-			Session temp;
-			temp.removeSession(check);
+			//remove session from Conference_Session
+			{
+				string str2 = "DELETE FROM Conference_Session WHERE ConferenceName='" + conferenceName + "' AND SessionName='" + check + "'";
+				EditRow(str2);
+			}
 
-			str = "SELECT SessionName FROM Conference_Session WHERE ConferenceName='" + conferenceName + "' GROUP BY ConferenceName";
-			check = Select(str);
+			//remove session from Session
+			{
+				Session temp;
+				temp.removeSession(check);
+				cout << check;
+
+				str = "SELECT SessionName FROM Conference_Session WHERE ConferenceName='" + conferenceName + "' GROUP BY ConferenceName";
+				check = Select(str);
+			}
 		}
 	}
 
@@ -77,11 +87,18 @@ void Conference::addSession(string conferenceName, string sessionName, string ro
 
 void Conference::removeSession(string conferenceName, string sessionName)
 {
-	//remove relation between EquipUse and Session
+	//remove relation between Conference and Session
 	string str = "DELETE FROM Conference_Session WHERE ConferenceName='" + conferenceName + "' AND SessionName='" + sessionName + "')";
 	EditRow(str);
 
 	//remove entry from Session table
 	Session accessor;
 	accessor.removeSession(sessionName);
+}
+
+void Conference::displaySessions(string conferenceName)
+{
+	string str = "SELECT SessionName FROM Conference_Session WHERE ConferenceName='" + conferenceName + "'";
+	string out = Select(str);
+	cout << out;
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿  Login.cpp
+=======
+﻿  AssetsManager.cpp
+>>>>>>> refs/remotes/origin/master
   Generating code
   41 of 41 functions (100.0%) were compiled, the rest were copied from previous compilation.
     11 functions were new in current compilation
