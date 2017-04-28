@@ -20,8 +20,4 @@ public:
 	
 	void deleteAccount(string, string);	//!delete user account from DB, requires password
 
-
-
-
-	
 };
