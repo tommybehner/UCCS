@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AssetsDB.h" />
+    <ClInclude Include="AssetsManager.h" />
     <ClInclude Include="Attendee.h" />
     <ClInclude Include="Business.h" />
     <ClInclude Include="Conference.h" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetsDB.cpp" />
+    <ClCompile Include="AssetsManager.cpp" />
     <ClCompile Include="Attendee.cpp" />
     <ClCompile Include="Business.cpp" />
     <ClCompile Include="Conference.cpp" />
