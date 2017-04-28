@@ -106,6 +106,35 @@ void AssetsManager::addRoom(string roomName, int cost)
 	newRoom.addRoom(roomName, cost);
 }
 
+void AssetsManager::removeRoom(string roomName)
+{
+	//Check if room exists
+	{
+		string str = "SELECT FROM Room WHERE Name='"+roomName+"'";
+		if (Select(str) != roomName)
+		{
+			cout << "Room DNE";
+			return;
+		}
+	}
+
+	//Check if room is used
+	{
+		string str = "SELECT Name FROM RoomUse WHERE NAME='" + roomName + "'";
+		if (Select(str) != "")
+		{
+			cout << "Room is in use";
+			return;
+		}
+	}
+
+	//remove room from DB
+	{
+		string str = "DELETE FROM Room WHERE Name='" + roomName + "'";
+		EditRow(str);
+	}
+}
+
 void AssetsManager::displayEquipment()
 {
 	Equipment temp;

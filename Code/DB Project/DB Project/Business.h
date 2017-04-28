@@ -10,11 +10,11 @@ public:
 	Business();
 	~Business();
 
-	void addBusiness(string, string);
-	void removeBusiness(string);
+	void addBusiness(string, string);				//!add a business to the DB
+	void removeBusiness(string);					//!remove a business and all related data
 
-	void addConference(string, string, string);
-	void removeConference(string, string);
+	void addConference(string, string, string);		//!adds a conference and relates it to the business
+	void removeConference(string, string);			//!removes the conference from the DB
 
-	void displayConference(string);
+	void displayConference(string);					//!Displays conferences related to Business
 };
