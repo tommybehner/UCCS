@@ -40,8 +40,9 @@ void Session::removeSession(string sessionName)
 		date = Select(str);
 		str = "SELECT Time FROM Session WHERE Name='" + sessionName + "'";
 		time = Select(str);
+		
 	}
-	
+	cout << roomName;
 	//unbook the room and check if session actuly exists
 	{
 		//remove room from roomUse

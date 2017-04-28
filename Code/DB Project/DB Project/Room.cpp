@@ -28,7 +28,7 @@ void Room::addRoom(string tempname, int tempcost)
 	}
 	else {//If equipment not found, creates room for the DB
 		  //creates a new Room in the database
-		str = "INSERT INTO Room(Name, Cost, IsAvail)\nVALUES ('" + name + "', " + strCost + ", 1);";
+		str = "INSERT INTO Room(Name, Cost)\nVALUES ('" + name + "', " + strCost + ");";
 		EditRow(str);
 	}
 	DBDisconnect();
