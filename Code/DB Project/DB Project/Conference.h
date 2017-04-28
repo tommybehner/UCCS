@@ -14,7 +14,7 @@ public:
 	void removeConference(string);
 
 	void addSession(string, string, string, string);
-	void removeSession();
+	void removeSession(string, string);
 
 	void displaySessions();
 };

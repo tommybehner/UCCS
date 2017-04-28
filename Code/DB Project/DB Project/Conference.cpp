@@ -44,11 +44,44 @@ void Conference::removeConference(string conferenceName)
 		}
 	}
 
-	//remove relation from conference and business
-
 	//remove conference from DB
 	{
 		string str = "DELETE FROM Conference WHERE Name='" + conferenceName + "'";
 		EditRow(str);
 	}
+}
+
+void Conference::addSession(string conferenceName, string sessionName, string roomName, string time)
+{
+	string date;
+	int check;
+	//determin, date
+	{
+		string str = "SELECT Date FROM Conference WHERE Name='" + conferenceName + "'";
+		date = Select(str);
+	}
+
+	//add entry in Session Table
+	{
+		Session accessor;
+		check = accessor.addSession(sessionName, roomName, date, time);
+	}
+
+	//relate Session with Conference
+	if (check == 1)
+	{
+		string str = "INSERT INTO Conference_Session(ConferenceName, SessionName)\nVALUES('" + conferenceName + "', '" + sessionName + "')";
+		EditRow(str);
+	}
+}
+
+void Conference::removeSession(string conferenceName, string sessionName)
+{
+	//remove relation between EquipUse and Session
+	string str = "DELETE FROM Conference_Session WHERE ConferenceName='" + conferenceName + "' AND SessionName='" + sessionName + "')";
+	EditRow(str);
+
+	//remove entry from Session table
+	Session accessor;
+	accessor.removeSession(sessionName);
 }
