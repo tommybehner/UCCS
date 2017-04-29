@@ -10,16 +10,15 @@ public:
 	AssetsManager();
 	~AssetsManager();
 
-	void addManager(string, string);
-	void removeManager(string);
+	void addManager(string, string);		//!creates a new Manager account
+	void removeManager(string);				//!removes a manager account
 
-	void addEquipment(string, int);
-	void removeEquipment(string, string);
+	void addEquipment(string, int);			//!Adds equipment from to the Equipment table
+	void removeEquipment(string, string);	//!Removes equipment from to the Equipment table and swaps with another equipment for all sessions that use it
 
-	void addRoom(string, int);
-	void removeRoom(string, string);
+	void addRoom(string, int);				//!Adds room to the room table
+	void removeRoom(string);				//!Removes Room from the room table Should not need to be used often
 
-	void displayEquipment();
-	void displayRoom();
+	void displayEquipment();				//!Displays all equipment
+	void displayRoom();						//!Displays all rooms
 };
-
