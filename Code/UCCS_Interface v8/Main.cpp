@@ -1,0 +1,16 @@
+#include "login.h"
+#include <QApplication>
+#include "DBConnector.h"
+#include <iostream>
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+    DBConnect();
+
+    QApplication a(argc, argv);
+    Login w;
+    w.show();
+
+    return a.exec();
+}
