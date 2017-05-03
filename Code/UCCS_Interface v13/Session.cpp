@@ -44,7 +44,7 @@ void Session::removeSession(string sessionName)
 		time = Select(str);
 		
 	}
-	cout << roomName;
+
 	//unbook the room and check if session actuly exists
 	{
 		//remove room from roomUse
@@ -52,7 +52,9 @@ void Session::removeSession(string sessionName)
 		AssetsDB accessor;
 		check = accessor.roomUseStop(roomName, date, time);
 		if (check == 0)
-			return;
+        {
+            return;
+        }
 	}
 
 	//remove Equipment from the session

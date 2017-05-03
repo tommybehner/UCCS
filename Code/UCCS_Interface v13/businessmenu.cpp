@@ -275,6 +275,13 @@ void BusinessMenu::on_pushButton_delete_clicked()
     Business temp;
     temp.removeConference(Qname.toLocal8Bit().constData(), nameStr);
 
+    //clear the text boxes
+    ui->lineEdit_name->clear();
+    ui->lineEdit_date->clear();
+    ui->lineEdit_name_session->clear();
+    ui->lineEdit_room_session->clear();
+    ui->lineEdit_time_session->clear();
+
     //update table
     this->setName(name);
     this->setCName("");
@@ -357,15 +364,22 @@ void BusinessMenu::on_pushButton_delete_session_clicked()
     QString Cname, name;
     Cname = ui->lineEdit_name->text();
     name = ui->lineEdit_name_session->text();
+                qDebug()<<(Cname);
+                qDebug()<<(name);
 
     //convert to string
     string CnameStr = Cname.toLocal8Bit().constData();
     string nameStr = name.toLocal8Bit().constData();
 
-    //send to Business Class for removal
+    //send to Conference Class for removal
     Conference temp;
     temp.removeSession(CnameStr, nameStr);
     }
+
+    //clear the text boxes
+    ui->lineEdit_name_session->clear();
+    ui->lineEdit_room_session->clear();
+    ui->lineEdit_time_session->clear();
 
     //update table
     this->setName(name);
@@ -373,6 +387,7 @@ void BusinessMenu::on_pushButton_delete_session_clicked()
     this->setSName("");
 
     this->updateSessionTable();
+    this->updateEquipmentTable();
 }
 
 void BusinessMenu::on_tableView_session_clicked(const QModelIndex &index)

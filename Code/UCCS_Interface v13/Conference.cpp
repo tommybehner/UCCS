@@ -93,7 +93,7 @@ void Conference::addSession(string conferenceName, string sessionName, string ro
 void Conference::removeSession(string conferenceName, string sessionName)
 {
 	//remove relation between Conference and Session
-	string str = "DELETE FROM Conference_Session WHERE ConferenceName='" + conferenceName + "' AND SessionName='" + sessionName + "')";
+    string str = "DELETE FROM Conference_Session WHERE ConferenceName='" + conferenceName + "' AND SessionName='" + sessionName + "'";
 	EditRow(str);
 
 	//remove entry from Session table

@@ -73,6 +73,7 @@ int AssetsDB::roomUseStop(string roomName, string date, string time)
 		string str = "SELECT Date FROM RoomUse WHERE Date='" + date + "'";
         string out = Select(str);
 		if (out == date)
+                        qDebug()<<("Lol");
 		{
 			string str = "SELECT Time FROM RoomUse WHERE Date='"+date+"' AND Time ='" + time + "'";
             string out = Select(str);
@@ -134,8 +135,6 @@ int AssetsDB::equipmentUse(string equipName, string date, string time)
 //removes equipment from the book
 int AssetsDB::equipmentUseStop(string equipName, string date, string time)
 {
-    //DBConnect();
-
 	//check if Equipment exists
 	{
 		string str = "SELECT Name FROM Equipment WHERE Name='" + equipName + "'";
@@ -150,18 +149,13 @@ int AssetsDB::equipmentUseStop(string equipName, string date, string time)
 
 	//check if Equipment is already scheduled
 	{
-        string str = "SELECT Date FROM EquipUse WHERE Name='" + equipName + "'";
+        string str = "SELECT Name FROM EquipUse WHERE Name='" + equipName + "' AND Date='"+date+"' AND Time='"+time+"'";
         string out = Select(str);
-		if (out == date)
+        if (out == equipName)
 		{
-            string str = "SELECT Time FROM EquipUse WHERE Name ='" + equipName + "'";
-            string out = Select(str);
-			if (out == time)
-            {
-				string str = "DELETE FROM EquipUse WHERE Name='" + equipName + "'";
-                EditRow(str);
-				return 1;
-			}
+            string str = "DELETE FROM EquipUse WHERE Name='" + equipName + "' AND Date='"+date+"' AND Time='"+time+"'";
+            EditRow(str);
+            return 1;
 		}
 	}
     qDebug() << ("Error: Equipment not in use\n");

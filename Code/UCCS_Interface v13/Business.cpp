@@ -86,7 +86,7 @@ void Business::removeConference(string businessName, string conferenceName)
 	string str = "DELETE FROM Business_Conference WHERE BusinessName='" + businessName + "' AND ConferenceName='" + conferenceName + "')";
 	EditRow(str);
 
-	//remove entry from Session table
+    //remove entry from Conference table
 	Conference accessor;
 	accessor.removeConference(conferenceName);
 }
