@@ -1,53 +1,3 @@
-/****************************************************************************
-**
-** Copyright (C) 2016 The Qt Company Ltd.
-** Contact: https://www.qt.io/licensing/
-**
-** This file is part of the examples of the Qt Toolkit.
-**
-** $QT_BEGIN_LICENSE:BSD$
-** Commercial License Usage
-** Licensees holding valid commercial Qt licenses may use this file in
-** accordance with the commercial license agreement provided with the
-** Software or, alternatively, in accordance with the terms contained in
-** a written agreement between you and The Qt Company. For licensing terms
-** and conditions see https://www.qt.io/terms-conditions. For further
-** information use the contact form at https://www.qt.io/contact-us.
-**
-** BSD License Usage
-** Alternatively, you may use this file under the terms of the BSD license
-** as follows:
-**
-** "Redistribution and use in source and binary forms, with or without
-** modification, are permitted provided that the following conditions are
-** met:
-**   * Redistributions of source code must retain the above copyright
-**     notice, this list of conditions and the following disclaimer.
-**   * Redistributions in binary form must reproduce the above copyright
-**     notice, this list of conditions and the following disclaimer in
-**     the documentation and/or other materials provided with the
-**     distribution.
-**   * Neither the name of The Qt Company Ltd nor the names of its
-**     contributors may be used to endorse or promote products derived
-**     from this software without specific prior written permission.
-**
-**
-** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-** "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-** LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-** A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-** OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-** SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-** LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-** DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-** THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-** (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
-**
-** $QT_END_LICENSE$
-**
-****************************************************************************/
-
 #include "sqleventmodel.h"
 
 #include <QDebug>
@@ -62,27 +12,30 @@ SqlEventModel::SqlEventModel()
 
 QList<QObject*> SqlEventModel::eventsForDate(const QDate &date)
 {
-    const QString queryStr = QString::fromLatin1("SELECT * FROM Event WHERE '%1' >= startDate AND '%1' <= endDate").arg(date.toString("yyyy-MM-dd"));
+    const QString queryStr = QString::fromLatin1("SELECT * FROM Calendar WHERE '%1' >= startDate AND '%1' <= endDate").arg(date.toString("yyyy-MM-dd"));
     QSqlQuery query(queryStr);
     if (!query.exec())
         qFatal("Query failed");
 
     QList<QObject*> events;
-    while (query.next()) {
-        Event *event = new Event(this);
-        event->setName(query.value("name").toString());
+    while (query.next())
+    {
+        Schedule *schedule = new Schedule(this);
+        schedule->setConferenceName(query.value("conference").toString());
+        schedule->setSessionName(query.value("session").toString());
+        schedule->setRoomName(query.value("room").toString());
 
         QDateTime startDate;
         startDate.setDate(query.value("startDate").toDate());
         startDate.setTime(QTime(0, 0).addSecs(query.value("startTime").toInt()));
-        event->setStartDate(startDate);
+        schedule->setStartDate(startDate);
 
         QDateTime endDate;
         endDate.setDate(query.value("endDate").toDate());
         endDate.setTime(QTime(0, 0).addSecs(query.value("endTime").toInt()));
-        event->setEndDate(endDate);
+        schedule->setEndDate(endDate);
 
-        events.append(event);
+        events.append(schedule);
     }
 
     return events;
@@ -96,18 +49,25 @@ void SqlEventModel::createConnection()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(":memory:");
-    if (!db.open()) {
+    if (!db.open())
+    {
         qFatal("Cannot open database");
         return;
     }
 
     QSqlQuery query;
     // We store the time as seconds because it's easier to query.
-    query.exec("create table Event (name TEXT, startDate DATE, startTime INT, endDate DATE, endTime INT)");
-    query.exec("insert into Event values('Grocery shopping', '2014-01-01', 36000, '2014-01-01', 39600)");
-    query.exec("insert into Event values('Ice skating', '2014-01-01', 57600, '2014-01-01', 61200)");
-    query.exec("insert into Event values('Doctor''s appointment', '2014-01-15', 57600, '2014-01-15', 63000)");
-    query.exec("insert into Event values('Conference', '2014-01-24', 32400, '2014-01-28', 61200)");
+    query.exec("create table Calendar (conference TEXT, session TEXT, room TEXT, startDate DATE, startTime INT, endDate DATE, endTime INT)");
+    query.exec("insert into Calendar values('Johnny Rando''s Conf', 'Session A', 'Lincoln Room', '2017-05-01', 36000, '2017-05-01', 39600)");
+    query.exec("insert into Calendar values('My Super Sweet Conference', 'Session B', 'Washington Room', '2017-05-01', 57600, '2017-05-01', 61200)");
+    query.exec("insert into Calendar values('UCCS Introduction Conference', 'Session C', 'Roosevelt Room', '2017-05-15', 57600, '2017-05-15', 63000)");
+    query.exec("insert into Calendar values('CompuCon 2017','Meet and Greet','Main Hall', '2017-05-24', 32400, '2017-05-24', 57600)");
+    query.exec("insert into Calendar values('CompuCon 2017', 'Session A', 'Lincoln Room', '2017-05-24', 36000, '2017-05-24', 39600)");
+    query.exec("insert into Calendar values('CompuCon 2017', 'Session B', 'Roosevelt Room', '2017-05-24', 36000, '2017-05-24', 39600)");
+    query.exec("insert into Calendar values('CompuCon 2017', 'Session C', 'Washington Room', '2017-05-24', 43200, '2017-05-24', 50600)");
+    query.exec("insert into Calendar values('CompuCon 2017', 'Session D', 'Lincoln Room', '2017-05-24', 43200, '2017-05-24', 49000)");
+    query.exec("insert into Calendar values('CompuCon 2017', 'Session E', 'Washington Room', '2017-05-25', 36000, '2017-05-25', 39600)");
+    query.exec("insert into Calendar values('CompuCon 2017', 'Special Session','Roosevelt Room', '2017-05-25', 43200, '2017-05-25', 61200)");
 
     return;
 }

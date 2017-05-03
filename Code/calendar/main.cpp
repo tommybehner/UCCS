@@ -49,12 +49,14 @@
 ****************************************************************************/
 
 #include <QtQml>
-
 #include "qtquickcontrolsapplication.h"
 #include "sqleventmodel.h"
 
 int main(int argc, char *argv[])
 {
+   //enables high DPI scaling for newer monitors
+    QtQuickControlsApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
     QtQuickControlsApplication app(argc, argv);
     qmlRegisterType<SqlEventModel>("org.qtproject.examples.calendar", 1, 0, "SqlEventModel");
     QQmlApplicationEngine engine(QUrl("qrc:/qml/main.qml"));

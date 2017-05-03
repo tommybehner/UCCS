@@ -18,10 +18,10 @@ DISTFILES += \
     main.qml
 
 HEADERS += \
-    event.h \
-    sqleventmodel.h
+    sqleventmodel.h \
+    schedule.h
 
 SOURCES += \
-    event.cpp \
     main.cpp \
-    sqleventmodel.cpp
+    sqleventmodel.cpp \
+    schedule.cpp

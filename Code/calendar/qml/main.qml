@@ -54,7 +54,8 @@ import QtQuick.Controls.Private 1.0
 import QtQuick.Controls.Styles 1.1
 import org.qtproject.examples.calendar 1.0
 
-ApplicationWindow {
+ApplicationWindow
+{
     visible: true
     width: 640
     height: 400
@@ -62,48 +63,56 @@ ApplicationWindow {
     minimumHeight: 300
     color: "#f4f4f4"
 
-    title: "Calendar Example"
+    title: "UCCS 2017 Schedule"
 
-    SystemPalette {
+    SystemPalette
+    {
         id: systemPalette
     }
 
-    SqlEventModel {
+    SqlEventModel
+    {
         id: eventModel
     }
 
-    Flow {
+    Flow
+    {
         id: row
         anchors.fill: parent
         anchors.margins: 20
         spacing: 10
         layoutDirection: Qt.RightToLeft
 
-        Calendar {
+        Calendar
+        {
             id: calendar
             width: (parent.width > parent.height ? parent.width * 0.6 - parent.spacing : parent.width)
             height: (parent.height > parent.width ? parent.height * 0.6 - parent.spacing : parent.height)
             frameVisible: true
             weekNumbersVisible: true
-            selectedDate: new Date(2014, 0, 1)
+            selectedDate: new Date(2017, 4, 1)
             focus: true
 
-            style: CalendarStyle {
-                dayDelegate: Item {
+            style: CalendarStyle
+            {
+                dayDelegate: Item
+                {
                     readonly property color sameMonthDateTextColor: "#444"
                     readonly property color selectedDateColor: Qt.platform.os === "osx" ? "#3778d0" : systemPalette.highlight
                     readonly property color selectedDateTextColor: "white"
                     readonly property color differentMonthDateTextColor: "#bbb"
                     readonly property color invalidDatecolor: "#dddddd"
 
-                    Rectangle {
+                    Rectangle
+                    {
                         anchors.fill: parent
                         border.color: "transparent"
                         color: styleData.date !== undefined && styleData.selected ? selectedDateColor : "transparent"
                         anchors.margins: styleData.selected ? -1 : 0
                     }
 
-                    Image {
+                    Image
+                    {
                         visible: eventModel.eventsForDate(styleData.date).length > 0
                         anchors.top: parent.top
                         anchors.left: parent.left
@@ -113,16 +122,20 @@ ApplicationWindow {
                         source: "qrc:/images/eventindicator.png"
                     }
 
-                    Label {
+                    Label
+                    {
                         id: dayDelegateText
                         text: styleData.date.getDate()
                         anchors.centerIn: parent
-                        color: {
+                        color:
+                        {
                             var color = invalidDatecolor;
-                            if (styleData.valid) {
+                            if (styleData.valid)
+                            {
                                 // Date is within the valid range.
                                 color = styleData.visibleMonth ? sameMonthDateTextColor : differentMonthDateTextColor;
-                                if (styleData.selected) {
+                                if (styleData.selected)
+                                {
                                     color = selectedDateTextColor;
                                 }
                             }
@@ -133,30 +146,36 @@ ApplicationWindow {
             }
         }
 
-        Component {
+        Component
+        {
             id: eventListHeader
 
-            Row {
+            Row
+            {
                 id: eventDateRow
                 width: parent.width
                 height: eventDayLabel.height
                 spacing: 10
 
-                Label {
+                Label
+                {
                     id: eventDayLabel
                     text: calendar.selectedDate.getDate()
                     font.pointSize: 35
                 }
 
-                Column {
+                Column
+                {
                     height: eventDayLabel.height
 
-                    Label {
+                    Label
+                    {
                         readonly property var options: { weekday: "long" }
                         text: Qt.locale().standaloneDayName(calendar.selectedDate.getDay(), Locale.LongFormat)
                         font.pointSize: 18
                     }
-                    Label {
+                    Label
+                    {
                         text: Qt.locale().standaloneMonthName(calendar.selectedDate.getMonth())
                               + calendar.selectedDate.toLocaleDateString(Qt.locale(), " yyyy")
                         font.pointSize: 12
@@ -165,12 +184,14 @@ ApplicationWindow {
             }
         }
 
-        Rectangle {
+        Rectangle
+        {
             width: (parent.width > parent.height ? parent.width * 0.4 - parent.spacing : parent.width)
             height: (parent.height > parent.width ? parent.height * 0.4 - parent.spacing : parent.height)
             border.color: Qt.darker(color, 1.2)
 
-            ListView {
+            ListView
+            {
                 id: eventsListView
                 spacing: 4
                 clip: true
@@ -179,12 +200,14 @@ ApplicationWindow {
                 anchors.margins: 10
                 model: eventModel.eventsForDate(calendar.selectedDate)
 
-                delegate: Rectangle {
+                delegate: Rectangle
+                {
                     width: eventsListView.width
                     height: eventItemColumn.height
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    Image {
+                    Image
+                    {
                         anchors.top: parent.top
                         anchors.topMargin: 4
                         width: 12
@@ -192,26 +215,44 @@ ApplicationWindow {
                         source: "qrc:/images/eventindicator.png"
                     }
 
-                    Rectangle {
+                    Rectangle
+                    {
                         width: parent.width
                         height: 1
                         color: "#eee"
                     }
 
-                    Column {
+                    Column
+                    {
                         id: eventItemColumn
                         anchors.left: parent.left
                         anchors.leftMargin: 20
                         anchors.right: parent.right
-                        height: timeLabel.height + nameLabel.height + 8
+                        height: timeLabel.height + conferenceLabel.height + sessionLabel.height + roomLabel.height + 8
 
-                        Label {
-                            id: nameLabel
+                        Label
+                        {
+                            id: conferenceLabel
                             width: parent.width
                             wrapMode: Text.Wrap
-                            text: modelData.name
+                            text: modelData.conference
                         }
-                        Label {
+                        Label
+                        {
+                            id: sessionLabel
+                            width: parent.width
+                            wrapMode: Text.Wrap
+                            text: modelData.session
+                        }
+                        Label
+                        {
+                            id: roomLabel
+                            width: parent.width
+                            wrapMode: Text.Wrap
+                            text: modelData.room
+                        }
+                        Label
+                        {
                             id: timeLabel
                             width: parent.width
                             wrapMode: Text.Wrap

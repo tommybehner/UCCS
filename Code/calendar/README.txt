@@ -1,0 +1,1 @@
+this is the WORKING calendar version.  right now, queries to a SQLite database are hardcoded in "sqleventmodel.cpp" and the SQLite database is kept in memory (volatile)
